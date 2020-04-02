@@ -62,13 +62,13 @@ ElevationMapping::ElevationMapping(ros::NodeHandle& nodeHandle)
 
   readParameters();
   pointCloudSubscriber_ = nodeHandle_.subscribe(pointCloudTopic_, 1, &ElevationMapping::pointCloudCallback, this);
-  if (!robotPoseTopic_.empty()) {
-    robotPoseSubscriber_.subscribe(nodeHandle_, robotPoseTopic_, 1);
-    robotPoseCache_.connectInput(robotPoseSubscriber_);
-    robotPoseCache_.setCacheSize(robotPoseCacheSize_);
-  } else {
+  // if (!robotPoseTopic_.empty()) {
+  //   robotPoseSubscriber_.subscribe(nodeHandle_, robotPoseTopic_, 1);
+  //   robotPoseCache_.connectInput(robotPoseSubscriber_);
+  //   robotPoseCache_.setCacheSize(robotPoseCacheSize_);
+  // } else {
     ignoreRobotMotionUpdates_ = true;
-  }
+  // }
 
   mapUpdateTimer_ = nodeHandle_.createTimer(maxNoUpdateDuration_, &ElevationMapping::mapUpdateTimerCallback, this, true, false);
 

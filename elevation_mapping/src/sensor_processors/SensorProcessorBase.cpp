@@ -123,7 +123,8 @@ bool SensorProcessorBase::transformPointCloud(
 {
   ros::Time timeStamp;
   timeStamp.fromNSec(1000 * pointCloud->header.stamp);
-  const std::string inputFrameId(pointCloud->header.frame_id);
+  // const std::string inputFrameId(pointCloud->header.frame_id);
+  const std::string inputFrameId("left_camera");
 
   tf::StampedTransform transformTf;
   try {

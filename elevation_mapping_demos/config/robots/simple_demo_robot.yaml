@@ -1,6 +1,6 @@
-point_cloud_topic: "/points"
+point_cloud_topic: "/points2"
 map_frame_id: "map"
-robot_base_frame_id: "base"
+robot_base_frame_id: "root"
 robot_pose_with_covariance_topic: "/pose"
 robot_pose_cache_size: 200
 track_point_frame_id: "base"
