@@ -1,0 +1,9 @@
+point_cloud_topic: "/velodyne_points"
+map_frame_id: "/map"
+robot_base_frame_id: "/link_LIDAR"
+robot_pose_with_covariance_topic: "/link_LIDAR"
+robot_pose_cache_size: 200
+track_point_frame_id: "/link_LIDAR"
+track_point_x: 0.0
+track_point_y: 0.0
+track_point_z: 0.0
