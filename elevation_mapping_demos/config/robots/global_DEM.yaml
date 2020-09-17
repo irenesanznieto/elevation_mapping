@@ -1,4 +1,4 @@
-point_cloud_topic: "/cloud"
+point_cloud_topic: "/lidar_pc"
 map_frame_id: "/map"
 robot_base_frame_id: "/laser"
 robot_pose_with_covariance_topic: "/laser"

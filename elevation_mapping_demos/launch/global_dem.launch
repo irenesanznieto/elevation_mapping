@@ -1,17 +1,20 @@
 <launch>
   <param name ="/use_sim_time" value="true"/> 
-  <node pkg="rosbag" type="play" name="player" output="screen" args="-r1 -\-clock /shared_volume/data/global_DEM/output_2020-09-08-18-47-17.bag"/>
+  <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="-r1 -\-clock /shared_volume/data/september_tests/16_09_2020/global_DEM/2020-09-16-14-26-18.bag"/> -->
+  <node pkg="rosbag" type="play" name="player" output="screen" args="-r1 -\-clock /shared_volume/data/september_tests/16_09_2020/global_DEM/2020-09-16-14-29-55.bag"/>
   <node pkg="rviz" type="rviz" name="rviz" output="screen"/>
+  <node pkg="tf" type="static_transform_publisher" name="map_2_US_origin" args="0 0 0 1 0 0 0 map US_origin 1000" />  
 
   <node pkg="computer_vision_ros_utils" type="hedge_pose2tf" name="hedge_pose2tf" output="screen"/>
-  <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="-0.02 0 -0.06-0.059 0 0 0 1 beacon210 laser 1000" />
+  <node pkg="computer_vision_ros_utils" type="pointcloud_downsampler_SICK" name="pointcloud_downsampler_SICK" />
+  <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0.0101 0.0904 -0.7992 0 0.7071068 0 0.7071068 xsense laser 1000" />  
 
   <!-- Elevation mapping node -->
   <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen">
     <rosparam command="load" file="$(find elevation_mapping_demos)/config/robots/global_DEM.yaml" />
     <rosparam command="load" file="$(find elevation_mapping_demos)/config/elevation_maps/global_DEM_config.yaml" />
     <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/sick_lidar.yaml" />
-    <rosparam param="point_cloud_topic">/cloud</rosparam>
+    <rosparam param="point_cloud_topic">/lidar_pc</rosparam>
     <rosparam param="map_frame_id">/map</rosparam>
     <rosparam param="robot_base_frame_id">/laser</rosparam> 
     <rosparam param="sensor_frame_id">/laser</rosparam>
